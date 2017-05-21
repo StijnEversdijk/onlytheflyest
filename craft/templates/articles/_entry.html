@@ -1,0 +1,58 @@
+{% import 'macros/item.html' as items %}
+{% extends "_layout" %}
+{% set bodyClass = 'article' %}
+
+{% block content %}
+
+<div class="page-content">
+  <div class="pagetitle">
+    <h2>{{ entry.title }}</h2>
+  </div>
+  <article>
+
+    {% set blogPost = entry.blogPost %}
+
+    {% for block in blogPost %}
+
+      {% if block.type == "introduction" %}
+        <p class="article__intro">{{ block.text }}</p>
+
+      {% elseif block.type == "imageFullWidth" %}
+        {% set images = block.image %}
+        {% for image in images %}
+          <img src="{{ image.url }}" class="image-full" />
+        {% endfor %}
+
+      {% elseif block.type == "quote" %}
+        <blockquote>
+          {{ block.blockquote }}
+        </blockquote>
+
+      {% elseif block.type == "heading" %}
+        <h3>{{ block.text }}</h3>
+
+      {% elseif block.type == "richText" %}
+        {{ block.bodyText }}
+
+      {% elseif block.type == "items" %}
+        {% set entries = block.clothingPicks %}
+
+        {% for entry in entries %}
+          {% if loop.index is divisible by(2) %}
+            <div class="col">
+              {{ items.item(entry) }}
+            </div>
+          {% else %}
+            <div class="col">
+              {{ items.item(entry) }}
+            </div>
+          {% endif %}
+        {% endfor %}
+
+      {% endif %}
+    {% endfor %}
+  </article>
+
+</div>
+<!-- .page-content -->
+{% endblock %}

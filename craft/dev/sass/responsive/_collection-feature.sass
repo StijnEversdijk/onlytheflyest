@@ -1,0 +1,60 @@
++breakpoint(640px)
+  .collection-feature
+    width: 100%
+    display: block
+
+    &__scroll-container
+      white-space: nowrap
+      overflow-y: hidden
+      overflow-x: scroll
+      -webkit-overflow-scrolling: touch
+
+    .collection-feature__see-all
+      display: none
+
+    h2
+      font-size: 1.1428571429em
+      padding-left: 20px
+
+    &__wrapper
+      width: 100%
+      display: block
+      font-size: 0
+
+    &__preview
+      display: inline-block
+      width: 90vw
+      position: relative
+
+      a
+        display: block
+
+      img
+        object-fit: cover
+        width: 100%
+        height: 100%
+        margin-bottom: 0
+
+      h4
+        font-size: 1rem
+        position: absolute
+        bottom: 20px
+        left: 20px
+        padding: 15px 0 12px 15px
+        background-color: white
+        width: calc(100% - 40px)
+        margin: 0
+        color: $black
+
+        &:after
+          display: inline-block
+          content: ""
+          position: absolute
+          right: 20px
+          top: calc(50% - 2px)
+          background-image: url(../img/arrow-next.svg)
+          background-repeat: no-repeat
+          background-size: contain
+          background-position: center
+          width: 18px
+          height: 5px

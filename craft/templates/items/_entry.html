@@ -1,0 +1,74 @@
+{#
+ # News entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a News entry’s URL is
+ # requested. That’s because the News section’s Template setting is
+ # set to “news/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested News entry.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+
+{% block content %}
+<div class="page-content">
+    <div class="productdetail">
+      <div class="col image-grid">
+        <div class="thumbnails">
+          {% set images = entry.images %}
+          {% for image in images %}
+            <img src="{{ image.url }}" alt="" />
+          {% endfor %}
+        </div>
+      </div><!-- .image-grid -->
+
+      <div class="col full-picture">
+        <div class="preview">
+          <img src="{{ entry.images.first().getUrl() }}" alt="" />
+        </div>
+
+        <div class="social">
+          <ul>
+            <li class="twitter">
+              <a href="#">Tweet it</a>
+            </li>
+            <li class="facebook">
+              <a href="#">Share it</a>
+            </li>
+            <li class="pinterest">
+              <a href="#">Pin it</a>
+            </li>
+          </ul>
+        </div>
+      </div><!-- .col -->
+
+      <div class="col product-description">
+        <nav>
+          <a href="{{ siteUrl }}">Back to overview</a>
+        </nav>
+        <div class="content">
+          <h4>{{ entry.title }}</h4>
+          <span class="price">
+            {% if entry.reducedPrice %}
+              <span class="original">{{ entry.reducedPrice }}</span>
+              <span class="reduced">{{ entry.currentPrice }}</span>
+            {% else %}
+              {{ entry.currentPrice }}
+            {% endif %}
+          </span>
+          {% if entry.storeName %}
+            <span class="shop">via <a href="{{ entry.storeUrl }}">{{ entry.storeName }}</a></span>
+            <button class="icon shop">Go to shop</button>
+          {% else %}
+            <button class="icon shop">Go to shop</button>
+          {% endif %}
+        </div><!-- .content -->
+      </div><!-- .description -->
+    </div><!-- .productdetail -->
+
+{% endblock %}

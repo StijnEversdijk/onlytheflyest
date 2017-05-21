@@ -1,0 +1,99 @@
+.header-wrapper
+  display: flex
+  position: relative
+  height: 106px
+  width: 100%
+
+  &.pinned
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 999
+
+  header
+    position: absolute
+    left: 60px
+    top: 40px
+    z-index: 999
+
+    h1
+      text-transform: uppercase
+      font-size: 1em
+      margin: 0
+      font-family: Diamante-DemiBold
+      font-size: 1.125em
+      letter-spacing: 1.44em
+
+      a
+        color: $black
+
+  .nav-wrapper
+    width: 100vw
+    position: absolute
+    top: 0
+    right: 0
+
+    .scroll-content
+      height: 100%
+      overflow: scroll
+
+    .page-content
+      overflow: auto
+      height: 100%
+
+    &.toggle-mobile-nav
+
+      .filter
+        display: block
+
+      .navigation
+        display: flex
+
+    .navigation
+      display: flex
+      justify-content: flex-end
+
+      ul
+        display: flex
+        padding-right: 60px
+
+        li
+          list-style: none
+          line-height: 78px
+
+          a
+            padding: 0 0 0 3em
+            font-size: 0.8125em
+            font-weight: 500
+            color: $grey
+
+            &:hover
+              color: $grey-dark
+
+            &.active
+              color: $black
+
+    .filter
+      display: none
+
+.hamburger,
+.close
+  position: absolute
+  left: 60px
+  top: auto
+  z-index: 11
+
+  &:hover
+    cursor: pointer
+
+  &.pinned
+    position: fixed
+    top: 41px
+
+.close
+  display: none
+
+.hamburger.hide
+  display: none
+.close.show
+  display: block

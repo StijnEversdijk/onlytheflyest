@@ -1,0 +1,33 @@
+html
+  box-sizing: border-box
+  height: 100%
+
+*,
+*:before,
+*:after
+  box-sizing: inherit
+  transition-timing-function: cubic-bezier(.14,.53,.95,.56)
+  transition-duration: .2s
+  transition-property: opacity, background-color, color
+
+body
+  -webkit-font-smoothing: antialiased
+  font-size: 16px
+  line-height: 1.25
+  font-family: 'Aktiv Grotesk', sans-serif
+  color: $black
+  height: 100%
+
+  +breakpoint(640px)
+    font-size: 14px
+
+a
+  text-decoration: none
+  color: $black
+
+.inner
+  width: calc(100% - 40px)
+  max-width: 828px
+  margin: 0 auto
+  display: flex
+  justify-content: space-between

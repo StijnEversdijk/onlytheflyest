@@ -1,0 +1,28 @@
+{% macro item(entry) %}
+
+{% set storeUrl = entry.storeUrl %}
+{% set firstImage = entry.images.first().getUrl %}
+{% set secondImage = entry.images[1].getUrl() %}
+
+<div class="product">
+  <a class="product__link" href="{{ storeUrl }}" target="_blank">
+    <img data-initial="{{ firstImage }}" data-hover="{{ secondImage }}" src="{{ firstImage }}" alt="Image of {{ entry.title}}">
+  </a>
+  <a href="{{ storeUrl }}" target="_blank">
+    <div class="description">
+      <div class="information">
+        <span class="price">
+          {% if entry.reducedPrice %}
+            <span class="original">€{{ entry.reducedPrice }}</span>
+            <span class="reduced">€{{ entry.currentPrice }}</span>
+          {% else %}
+            €{{ entry.currentPrice }}
+          {% endif %}
+        </span>
+        <span>{{ entry.title }}</span>
+      </div>
+      <img src="{{siteUrl}}/app/img/arrow-next.svg" />
+    </div> <!-- .description -->
+  </a>
+</div><!-- .product -->
+{% endmacro %}

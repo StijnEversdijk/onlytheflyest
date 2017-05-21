@@ -1,0 +1,104 @@
+{#
+ # Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+
+<head>
+
+  <!-- Meta -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Collection of only the flyest menswear online today."/>
+  <link rel="home" href="{{ siteUrl }}" />
+  <!-- CSS -->
+  <link href="{{ siteUrl }}app/css/global.css" rel="stylesheet" />
+
+</head>
+
+{% if bodyClass is defined %}
+    <body class="{{ bodyClass }}">
+{% else %}
+    <body class="{{ craft.request.getSegment(1) ?: 'home' }}">
+{% endif %}
+
+  <div class="header-wrapper">
+		<header>
+			<h1><a href="{{ siteUrl }}">OTF</a></h1>
+    </header>
+
+
+
+  <div class="nav-wrapper">
+  <nav class="navigation">
+    {% set nav = craft.amNav.getNavRaw('menu') %}
+    <ul>
+      {% for node in nav %}
+      <li><a class="{{ page.id == entry.id ? 'active' }}" href="{{ node.url }}" title="{{ node.name }}"{% if node.blank %} target="_blank"{% endif %}>{{ node.name }}</a></li>
+      {% endfor %}
+    </ul>
+    </nav>
+  </div>
+  </div>
+
+		<main id="content" role="main">
+			{% block content %}
+				<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+				<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+			{% endblock %}
+		</main>
+
+    <footer>
+      <div class="inner">
+        <div class="footer_details">
+          <h1>Only The Flyest</h1>
+          <p>
+            © {{ now.year }} Only The Flyest.<br />All rights reserved.
+          </p>
+        </div>
+        <div class="footer_nav">
+          <ul>
+            {% for page in navigation.order('id asc') %}
+              <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="footer_social">
+          <p>
+            Stay updated on the flyest menswear
+          </p>
+          <ul>
+            {% if social.facebook %}
+              <li><a href="{{ social.facebook }}">Facebook</a></li>
+            {% endif %}
+            {% if social.instagram %}
+              <li><a href="#">Instagram</a></li>
+            {% endif %}
+            {% if social.youtube %}
+              <li><a href="#">YouTube</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </footer>
+	</div>
+
+  <script>window.jQuery || document.write('<script src="{{ siteUrl }}app/js/vendor/jquery-1.12.2.min.js"><\/script>')</script>
+  <script src="{{ siteUrl }}app/js/main-min.js"></script>
+
+</body>
+
+</html>

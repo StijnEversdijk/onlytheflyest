@@ -1,0 +1,107 @@
+{#
+ # Homepage template
+ # ---------------
+ #
+ # When this template gets loaded, it will be because someone has accessed
+ # http://yoursite.com/ (without any URI). Craft checks to see if you have
+ # a Single section set to be the Homepage (as you do, by default), and
+ # loads the section’s Template (this file). A special ‘entry’ variable
+ # will already be set for you, assigned to the Homepage entry.
+ #
+ # It's worth noting that even if you didn't have a Homepage Single section,
+ # as long as this template remains at craft/templates/index.html, it
+ # would still be the one to get loaded when accessing http://yoursite.com/,
+ # albeit without an ‘entry’ variable already set for you.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% import 'macros/item.html' as items %}
+
+
+{% extends "_layout" %}
+
+{% block content %}
+
+  <div class="page-content">
+    <div class="pagetitle">
+    	<h2>{{ entry.title }}</h2>
+      {{ entry.body }}
+    </div>
+
+    <div class="collection-feature">
+      <h2>Collections items</h2>
+      <div class="collection-feature__scroll-container">
+      <div class="collection-feature__wrapper">
+      {% set collections = craft.entries.section('collections').limit(3) %}
+      {% for collection in collections %}
+      <div class="collection-feature__preview">
+        <a href="{{ collection.url }}">
+        {% set coverimage = collection.coverImage.first() %}
+        <img src="{{ coverimage.url }}" alt="">
+        <div class="collection-feature__title">
+          <h4>{{ collection.title }}</h4>
+          <img src="app/img/arrow-next.svg" />
+        </div>
+      </a></div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <a class="collection-feature__see-all" href="collections">See all collections</a>
+</div>
+
+  <div class="feed">
+    <h2>Selected items</h2>
+
+    {% paginate craft.entries.section('items').limit(2) as pageInfo, pageEntries %}
+    {% for entry in pageEntries %}
+      {% if loop.index is divisible by(2) %}
+      <div class="col">
+        {{ items.item(entry) }}
+      </div>
+    {% else %}
+      <div class="col">
+        {{ items.item(entry) }}
+      </div>
+    {% endif %}
+    {% endfor %}
+
+    <div class="pagination">
+    {% if pageInfo.prevUrl %}
+      <a class="step previous" href="{{ pageInfo.prevUrl }}">Previous</a>
+    {% else %}
+      <span class="step is-hidden">Previous</span>
+    {% endif %}
+
+    <div class="pagenumbers">
+      <ul>
+        {% for page, url in pageInfo.getPrevUrls(2) %}
+            <li>
+              <a href="{{ url }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        <li>
+          <a class="active" href="#">{{ pageInfo.currentPage }}</a>
+        </li>
+
+        {% for page, url in pageInfo.getNextUrls(2) %}
+            <li>
+              <a href="{{ url }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+      </ul>
+    </div>
+
+    {% if pageInfo.nextUrl %}
+      <a class="step next" href="{{ pageInfo.nextUrl }}">Next</a>
+      {% else %}
+        <span class="step is-hidden">Next</span>
+      {% endif %}
+    </div>
+  </div><!-- .feed -->
+
+{% endblock %}

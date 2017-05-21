@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="8px" height="13px" viewBox="0 0 8 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>icn-fb</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landing-page" transform="translate(-744.000000, -3018.000000)" fill="#666666">
+            <g id="Footer" transform="translate(-1.000000, 2932.000000)">
+                <path d="M752.492188,86.09375 L752.492188,88.15625 L751.265625,88.15625 C750.817706,88.15625 750.515626,88.2499991 750.359375,88.4375 C750.203124,88.6250009 750.125,88.9062481 750.125,89.28125 L750.125,90.7578125 L752.414062,90.7578125 L752.109375,93.0703125 L750.125,93.0703125 L750.125,99 L747.734375,99 L747.734375,93.0703125 L745.742188,93.0703125 L745.742188,90.7578125 L747.734375,90.7578125 L747.734375,89.0546875 C747.734375,88.0859327 748.005206,87.3346381 748.546875,86.8007812 C749.088544,86.2669244 749.809891,86 750.710938,86 C751.476566,86 752.07031,86.0312497 752.492188,86.09375 L752.492188,86.09375 Z" id="icn-fb"></path>
+            </g>
+        </g>
+    </g>
+</svg>

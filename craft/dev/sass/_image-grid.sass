@@ -1,0 +1,43 @@
+.col
+
+  &.image-grid
+    flex-basis: 15.53191489%
+    height: calc(100% - 100px)
+    display: flex
+
+    .thumbnails
+      width: 100%
+      padding-left: 40px
+      line-height: 0
+      align-self: center
+
+      img
+        width: 100%
+        height: auto
+        // margin: 9px 0
+        border: 1px solid $image-border
+
+        &:nth-of-type(2)
+          margin: 20px 0
+
+        &.selected
+          border: 1px solid $grey
+
+        &:hover
+          cursor: pointer
+
+  &.full-picture
+    flex-basis: 39.36170213%
+    margin-left: 20px
+
+    .preview
+      width: 100%
+      height: 580px
+      line-height: 0
+      border: 1px solid $image-border
+
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+        object-position: center center

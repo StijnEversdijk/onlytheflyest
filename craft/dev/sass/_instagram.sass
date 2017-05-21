@@ -1,0 +1,42 @@
+.instagram
+  width: 95%
+  max-width: 828px
+  margin: 0 auto 100px
+  display: flex
+  justify-content: space-between
+
+  a
+    width: 100%
+    display: block
+    font-size: 0.875em
+    color: $black
+    margin-top: 1em
+    font-weight: 500
+
+    span
+      color: $grey-dark
+
+
+
+  &__feed
+    width: calc(60% - 15px)
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+
+    div
+      width: calc(100%/3 - 20px)
+      @include aspect-ratio(1,1)
+
+    img
+      width: 100%
+
+
+  &__follow
+    width: calc(40% - 15px)
+
+
+    img
+      object-fit: cover
+      width: 100%
+      height: 100%

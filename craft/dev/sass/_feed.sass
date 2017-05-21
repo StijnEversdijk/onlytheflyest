@@ -1,0 +1,91 @@
+.feed
+  display: flex
+  justify-content: space-between
+  width: 95%
+  max-width: 828px
+  margin: 0 auto
+  flex-wrap: wrap
+
+  h2
+    color: $black
+    font-size: 1em
+    margin-bottom: 1em
+    margin-top: 0
+    font-weight: 500
+    width: 100%
+
+.divider
+  display: block
+  width: 100%
+
+  .month,
+  .suggestion
+    text-align: center
+    font-size: 2em
+    color: $grey-light
+    margin: 0 0 80px 0
+    font-weight: 500
+
+  .suggestion
+    margin: 100px 0 60px 0
+
+.col
+  width: calc(50% - 40px)
+
+  .product
+    width: 100%
+    margin-bottom: 80px
+    position: relative
+    background-color: transparent
+
+    &__link
+      display: block
+      line-height: 0
+
+    img
+      height: 480px
+      width: 100%
+      object-fit: cover
+      border: 1px solid $image-border
+
+    .description
+      width: 100%
+      font-size: 0.875em
+      line-height: 1.3
+      margin-top: 20px
+      color: $grey-dark
+      font-weight: 500
+      display: flex
+      background-color: white
+
+      img
+        width: 18px
+        height: 5px
+        margin-top: 8px
+        border: none
+
+      .information
+        width: calc(100% - 18px)
+
+      .price
+        display: block
+        color: $black
+        font-size: 1.1428571429em
+
+        .original
+          text-decoration: line-through
+          margin-right: 2px
+
+        .reduced
+          color: $red
+
+    &:hover
+      cursor: pointer
+
+      .description
+        color: $black
+
+        a
+          width: 100%
+          height: 100%
+          display: block

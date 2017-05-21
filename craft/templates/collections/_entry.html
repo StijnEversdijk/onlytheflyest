@@ -1,0 +1,36 @@
+{% import 'macros/item.html' as items %}
+{% extends "_layout" %}
+{% set bodyClass = 'collection' %}
+
+{% block content %}
+
+<div class="page-content">
+  {% set coverImage = entry.coverImage.first() %}
+  <div class="collection__hero">
+    <div class="collection__bg-image" style="background-image: url({{ coverImage.url }});"></div>
+    <h2>{{ entry.title }}</h2>
+  </div>
+  <article>
+    {{ entry.body }}
+  </article>
+  {% set allRelatedEntries = craft.entries.relatedTo({ sourceElement: entry }) %}
+  {% if allRelatedEntries|length %}
+    <h1>no</h1>
+  {% endif %}
+
+
+  {% set entries = entry.itemPicker %}
+  {% for entry in entries %}
+  {% if loop.index is divisible by(2) %}
+    <div class="col">
+      {{ items.item(entry) }}
+    </div>
+  {% else %}
+    <div class="col">
+      {{ items.item(entry) }}
+    </div>
+  {% endif %}
+  {% endfor %}
+</div>
+<!-- .page-content -->
+{% endblock %}

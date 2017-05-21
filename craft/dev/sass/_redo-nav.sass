@@ -1,0 +1,81 @@
+.header-wrapper
+  display: flex
+  position: relative
+  height: 106px
+  width: 100%
+
+  header
+    position: absolute
+    left: 0
+    top: 0
+
+    h1
+      text-transform: uppercase
+      font-size: 1em
+      margin: 0
+      font-family: Diamante-DemiBold
+      font-size: 1.125em
+      letter-spacing: 1.44em
+
+      a
+        color: $black
+
+  .nav-wrapper
+    width: 100vw
+    position: absolute
+    top: 0
+    right: 0
+    +breakpoint(640px)
+      position: static
+
+    .scroll-content
+      // height: 100%
+      height: 100vh
+      overflow: scroll
+
+    .page-content
+      overflow: auto
+      height: 100%
+
+    &.toggle-mobile-nav
+
+      .filter
+        display: block
+
+      .navigation
+        display: flex
+        +breakpoint(640px)
+          display: block
+
+    .navigation
+      display: flex
+      justify-content: flex-end
+      +breakpoint(640px)
+        display: none
+
+      ul
+        display: flex
+        +breakpoint(640px)
+          display: block
+
+        li
+          list-style: none
+          line-height: 78px
+
+          a
+            padding: 0 0 0 3em
+            font-size: 0.8125em
+            font-weight: 500
+            color: $grey
+
+            &.active
+              color: $black
+
+    .filter
+      display: none
+
+.hamburger,
+.close
+  position: absolute
+  top: 100px
+  z-index: 999
